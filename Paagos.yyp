@@ -25,6 +25,7 @@
     {"id":{"name":"oBig_Icicles","path":"objects/oBig_Icicles/oBig_Icicles.yy",},},
     {"id":{"name":"oIceBlock","path":"objects/oIceBlock/oIceBlock.yy",},},
     {"id":{"name":"oIcePlatform","path":"objects/oIcePlatform/oIcePlatform.yy",},},
+    {"id":{"name":"oGoal","path":"objects/oGoal/oGoal.yy",},},
     {"id":{"name":"oIcicles","path":"objects/oIcicles/oIcicles.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"oSmall_Icicles","path":"objects/oSmall_Icicles/oSmall_Icicles.yy",},},

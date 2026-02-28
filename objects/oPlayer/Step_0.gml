@@ -1,3 +1,9 @@
+// If dying, flash red and wait for Alarm_0 to restart
+if (dying) {
+	image_alpha = lerp(image_alpha, 0, 0.08); //fade out while waiting
+	exit;
+}
+
 x_speed=0; //reset horizontal speed
 y_speed+=grav; //add gravity to y_speed
 
@@ -16,7 +22,7 @@ if (keyboard_check_pressed(vk_space) and !dashing and dash_cooldown_timer <= 0) 
 }
 
 if (dashing) {
-	x_speed = image_xscale * movement_speed * 2; //override x_speed with 2x dash speed in faced direction
+	x_speed = image_xscale * movement_speed * 4; //override x_speed with 2x dash speed in faced direction
 	dash_timer -= 1;
 	if (dash_timer <= 0) {
 		dashing = false;
@@ -42,10 +48,23 @@ if keyboard_check(vk_right) {
 	image_xscale=-1; //reset her Pagos so she faces left
 }
 
+// check if player reached the goal
+if (instance_exists(oGoal) && point_distance(x, y, oGoal.x, oGoal.y) < 48) {
+	room_goto_next();
+}
+
 if(place_meeting(x,y,oIcicles)){ //if Pagos collides with the Icicles
-	room_restart() //restart the level
+	if (!dying) {
+		dying = true;
+		image_blend = c_red; //flash red on death
+		alarm[0] = 45; //restart after ~0.75 seconds
+	}
 }
 
 if (y>room_height or y<0 or x>room_width or x<0){ //if the player is outside of the room
-	room_restart();
+	if (!dying) {
+		dying = true;
+		image_blend = c_red;
+		alarm[0] = 45;
+	}
 }
