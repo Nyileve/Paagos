@@ -19,6 +19,7 @@ if keyboard_check(vk_right){ //if the right arrow key is pressed
 if (keyboard_check_pressed(vk_space) and !dashing and dash_cooldown_timer <= 0) {
 	dashing = true;
 	dash_timer = dash_duration;
+	sprite_index = spr_dashing; // show the dashing layer variant
 }
 
 if (dashing) {
@@ -27,6 +28,7 @@ if (dashing) {
 	if (dash_timer <= 0) {
 		dashing = false;
 		dash_cooldown_timer = dash_cooldown; //start cooldown so dash can't be spammed
+		sprite_index = spr_normal; // revert to normal sprite when dash ends
 	}
 }
 

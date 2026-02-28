@@ -8,3 +8,7 @@ dash_timer=0;
 dash_duration=20; //frames the dash lasts
 dash_cooldown_timer=0;
 dash_cooldown=30; //frames before dash can be used again
+// sprite variants for toggling layers: use two small resource variants
+spr_normal = sPlayer_normal;
+spr_dashing = sPlayer_dashing;
+sprite_index = spr_normal;
