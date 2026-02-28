@@ -4,10 +4,10 @@ y_speed+=grav; //add gravity to y_speed
 if keyboard_check(vk_right){ //if the right arrow key is pressed
 	x_speed=movement_speed; 
 }else if keyboard_check(vk_left){ //otherwise, if the left arrow key is pressed
-	x_speed=-movement_speed; //set the horizontal speed to negative heidi's movement_speed, making her move left
+	x_speed=-movement_speed; //set the horizontal speed to negative movement_speed, making Pagos move left
 }
 
-move_and_collide(x_speed, y_speed, oIcePlatform);
+move_and_collide(x_speed, y_speed, oSolid); //use oSolid so all solid objects (oIcePlatform, oIceBlock) block the player
 
 if(place_meeting(x,y+1,oSolid)){ //if Pagos is on the ground
 	if(keyboard_check_pressed(vk_up)){ //and the 'up' arrow key is pressed
