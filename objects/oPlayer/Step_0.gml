@@ -7,34 +7,127 @@ if (dying) {
 x_speed=0; //reset horizontal speed
 y_speed+=grav; //add gravity to y_speed
 
-if (dash_cooldown_timer > 0) { dash_cooldown_timer -= 1; } //count down dash cooldown each step
-
-if keyboard_check(vk_right){ //if the right arrow key is pressed
-	x_speed=movement_speed; 
-}else if keyboard_check(vk_left){ //otherwise, if the left arrow key is pressed
-	x_speed=-movement_speed; //set the horizontal speed to negative movement_speed, making Pagos move left
+// ------------------------------------
+// FREEZE FRAME (top of Step)
+// ------------------------------------
+if (freeze_timer > 0) {
+    freeze_timer--;
+    exit;
 }
 
-//dash: space triggers a 2x speed burst in the direction Pagos is facing
-if (keyboard_check_pressed(vk_space) and !dashing and dash_cooldown_timer <= 0) {
-	dashing = true;
-	dash_timer = dash_duration;
-	sprite_index = spr_dashing; // show the dashing layer variant
+
+// ------------------------------------
+// COOLDOWNS
+// ------------------------------------
+if (dash_cooldown_timer > 0) {
+    dash_cooldown_timer--;
 }
 
+
+// ------------------------------------
+// RESET AIR DASH ON LAND
+// ------------------------------------
+if (place_meeting(x, y + 1, oSolid)) {
+    air_dashes_left = max_air_dashes;
+}
+
+
+// ------------------------------------
+// NORMAL MOVEMENT (disabled during dash)
+// ------------------------------------
+if (!dashing) {
+
+    if (keyboard_check(vk_right)) {
+        x_speed = movement_speed;
+        image_xscale = 1;
+    }
+    else if (keyboard_check(vk_left)) {
+        x_speed = -movement_speed;
+        image_xscale = -1;
+    }
+    else {
+        x_speed = 0;
+    }
+
+}
+
+
+// ------------------------------------
+// START DASH (ground OR air)
+// ------------------------------------
+if (keyboard_check_pressed(vk_space) && !dashing && dash_cooldown_timer <= 0) {
+
+    if (place_meeting(x, y + 1, oSolid) || air_dashes_left > 0) {
+
+        dashing = true;
+        dash_timer = dash_duration;
+        dash_dir = image_xscale;
+
+        y_speed = 0;
+        grav = 0;
+
+        sprite_index = spr_dashing;
+
+        // Freeze + Camera Shake
+        freeze_timer = 3;
+        shake_timer = 10;
+        shake_strength = 6;
+
+        if (!place_meeting(x, y + 1, oSolid)) {
+            air_dashes_left--;
+        }
+    }
+}
+
+
+// ------------------------------------
+// DASH LOGIC
+// ------------------------------------
 if (dashing) {
-	x_speed = image_xscale * movement_speed * 5; //override x_speed with 2x dash speed in faced direction
-	dash_timer -= 1;
-	grav=0.5;
-	if (dash_timer <= 0) {
-		dashing = false;
-		grav=1;
-		sprite_index = spr_normal;
-		dash_cooldown_timer = dash_cooldown; //start cooldown so dash can't be spammed
-	}
+
+    x_speed = dash_dir * (movement_speed * 5);
+    dash_timer--;
+
+    // Dash cancel into jump
+    if (keyboard_check_pressed(vk_up)) {
+        dashing = false;
+        y_speed = -jump_speed;
+    }
+
+    if (dash_timer <= 0) {
+        dashing = false;
+    }
+
+    if (!dashing) {
+        grav = 1;
+        sprite_index = spr_normal;
+        dash_cooldown_timer = dash_cooldown;
+    }
 }
 
-move_and_collide(x_speed, y_speed, oSolid); //use oSolid so all solid objects (oIcePlatform, oIceBlock) block the player
+
+// ------------------------------------
+// CAMERA SHAKE
+// ------------------------------------
+if (shake_timer > 0) {
+    shake_timer--;
+    shake_strength *= 0.9;
+
+    var offset_x = random_range(-shake_strength, shake_strength);
+    var offset_y = random_range(-shake_strength, shake_strength);
+
+    camera_set_view_pos(
+        view_camera[0],
+        camera_get_view_x(view_camera[0]) + offset_x,
+        camera_get_view_y(view_camera[0]) + offset_y
+    );
+}
+
+
+// ------------------------------------
+// COLLISION
+// ------------------------------------
+move_and_collide(x_speed, y_speed, oSolid);
 
 if(place_meeting(x,y+1,oSolid)){ //if Pagos is on the ground
 	if(keyboard_check_pressed(vk_up)){ //and the 'up' arrow key is pressed
