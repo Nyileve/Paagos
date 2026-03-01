@@ -1,11 +1,19 @@
 
-Sunday: 
-- Make Sprite for when the dash is charged (Eye becomes blue)
-- Room2 was A.I. generated, change it around. Idea is good though
-- Draw sprite for oGoal, probs some sort of fish or food or smth
+
+To Do:
+- Add tips on level 2 and 3 in the same way the instructions were made for level 1. 
+  (level 2: Press jump and then dash quickly to avoid icicles)
+  (Level 3: You don't have to use dash every time you jump)
+- Add particles for the dash
+- Make snow fall in Menu and Win Screen
+- Add music
+- Add shake (?)
+- More levels
+- different obstacles
 
 
 Bug List
 ========
 1. If you aren't moving forward at the end of the dash, you get stuck(can't move) and dash(?) forward again. 
    Most of the time hitting a spike. 
+2. Sometimes freezes, probably same reason as no. 1 (probs collision mask problem)

@@ -48,6 +48,7 @@
     {"id":{"name":"sGoal","path":"sprites/sGoal/sGoal.yy",},},
     {"id":{"name":"sIceBlock","path":"sprites/sIceBlock/sIceBlock.yy",},},
     {"id":{"name":"sIcePlatform","path":"sprites/sIcePlatform/sIcePlatform.yy",},},
+    {"id":{"name":"sInstructions","path":"sprites/sInstructions/sInstructions.yy",},},
     {"id":{"name":"sLedge","path":"sprites/sLedge/sLedge.yy",},},
     {"id":{"name":"sLegendaryFish","path":"sprites/sLegendaryFish/sLegendaryFish.yy",},},
     {"id":{"name":"sMenuBackground","path":"sprites/sMenuBackground/sMenuBackground.yy",},},
