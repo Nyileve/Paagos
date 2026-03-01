@@ -1,6 +1,7 @@
 x_speed=0;
 y_speed=0;
 movement_speed=4.5;
+jump_speed=17.5;
 grav=1;
 dying=false;
 dashing=false;
@@ -8,6 +9,12 @@ dash_timer=0;
 dash_duration=15; //frames the dash lasts
 dash_cooldown_timer=0;
 dash_cooldown=40; //frames before dash can be used again
+dash_dir = 1;
+freeze_timer = 0;
+shake_timer = 0;
+shake_strength = 0;
+max_air_dashes = 1;
+air_dashes_left = max_air_dashes;
 // sprite variants for toggling layers: use two small resource variants
 spr_normal = sPlayer_normal;
 spr_dashing = sPlayer_dashing;
