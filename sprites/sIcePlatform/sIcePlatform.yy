@@ -1,9 +1,9 @@
 {
   "$GMSprite":"v2",
   "%Name":"sIcePlatform",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":159,
-  "bbox_left":50,
+  "bbox_left":51,
   "bbox_right":149,
   "bbox_top":60,
   "collisionKind":1,

@@ -18,4 +18,5 @@ air_dashes_left = max_air_dashes;
 // sprite variants for toggling layers: use two small resource variants
 spr_normal = sPlayer_normal;
 spr_dashing = sPlayer_dashing;
+spr_dashavailable = sPlayer_DashAvailable;
 sprite_index = spr_normal;

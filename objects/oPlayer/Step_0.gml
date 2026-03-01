@@ -148,3 +148,11 @@ if (y>room_height or y<0 or x>room_width or x<0){ //if the player is outside of 
 		alarm[0] = 45;
 	}
 }
+
+if (!dashing) {
+    if (dash_cooldown_timer <= 0) {
+        sprite_index = spr_dashavailable;
+    } else {
+        sprite_index = spr_normal;
+    }
+}

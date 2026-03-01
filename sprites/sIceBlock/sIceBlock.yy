@@ -1,11 +1,11 @@
 {
   "$GMSprite":"v2",
   "%Name":"sIceBlock",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":159,
   "bbox_left":48,
   "bbox_right":147,
-  "bbox_top":60,
+  "bbox_top":61,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
