@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"oGoal",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oCliff",
+  "eventList":[],
   "managed":true,
-  "name":"oGoal",
+  "name":"oCliff",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oSolid",
+    "path":"objects/oSolid/oSolid.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sGoal",
-    "path":"sprites/sGoal/sGoal.yy",
+    "name":"sCliff",
+    "path":"sprites/sCliff/sCliff.yy",
   },
   "spriteMaskId":null,
   "visible":true,

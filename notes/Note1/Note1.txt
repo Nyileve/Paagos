@@ -1,0 +1,11 @@
+
+Sunday: 
+- Make Sprite for when the dash is charged (Eye becomes blue)
+- Room2 was A.I. generated, change it around. Idea is good though
+- Draw sprite for oGoal, probs some sort of fish or food or smth
+
+
+Bug List
+========
+1. If you aren't moving forward at the end of the dash, you get stuck(can't move) and dash(?) forward again. 
+   Most of the time hitting a spike. 

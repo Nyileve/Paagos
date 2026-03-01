@@ -23,12 +23,14 @@ if (keyboard_check_pressed(vk_space) and !dashing and dash_cooldown_timer <= 0) 
 }
 
 if (dashing) {
-	x_speed = image_xscale * movement_speed * 4; //override x_speed with 2x dash speed in faced direction
+	x_speed = image_xscale * movement_speed * 5; //override x_speed with 2x dash speed in faced direction
 	dash_timer -= 1;
+	grav=0.5;
 	if (dash_timer <= 0) {
 		dashing = false;
+		grav=1;
+		sprite_index = spr_normal;
 		dash_cooldown_timer = dash_cooldown; //start cooldown so dash can't be spammed
-		sprite_index = spr_normal; // revert to normal sprite when dash ends
 	}
 }
 
@@ -36,7 +38,7 @@ move_and_collide(x_speed, y_speed, oSolid); //use oSolid so all solid objects (o
 
 if(place_meeting(x,y+1,oSolid)){ //if Pagos is on the ground
 	if(keyboard_check_pressed(vk_up)){ //and the 'up' arrow key is pressed
-		y_speed = -20; //make Pagos jump by setting her y_speed to a negative value
+		y_speed = -17.5; //make Pagos jump by setting her y_speed to a negative value
 	}else{ //otherwise, if Pagos is on the ground but not jumping
 		y_speed = 0; //set her y_speed to 0 se she doesn't fall through the ground
 	}
